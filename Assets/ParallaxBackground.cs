@@ -8,7 +8,7 @@ public class ParallaxBackground : MonoBehaviour
     private float updatePosition;
 
     public float scrollSpeed;
-    public float tileSize;
+    public Renderer backgroundRender;
 
 
     // Start is called before the first frame update
@@ -20,6 +20,6 @@ public class ParallaxBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updatePositon = Mathf.Repeat(Time.time * tileSize);
+        backgroundRender.material.mainTextureOffset += new Vector2(0, scrollSpeed * Time.deltaTime);
     }
 }
