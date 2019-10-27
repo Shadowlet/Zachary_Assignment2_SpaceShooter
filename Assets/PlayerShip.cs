@@ -7,8 +7,10 @@ public class PlayerShip : MonoBehaviour
 {
     Rigidbody2D my_Rigidbody;
     Animator my_animator;
-    public float moveSpeed;
 
+    public PlayerBullet bulletPool;
+
+    public float moveSpeed;
     private bool isNeutral = true;
 
 
@@ -28,9 +30,9 @@ public class PlayerShip : MonoBehaviour
         {
             MoveShip();
         }
-        else
+        if (Input.GetKeyDown(KeyCode.J))
         {
-           
+            ShootBullets();           
         }
 
         
@@ -77,7 +79,11 @@ public class PlayerShip : MonoBehaviour
 
     private void ShootBullets()
     {
-
+        Debug.Log("Shooting");
+        GameObject temp = bulletPool.GetBullet();
+        temp.transform.position = transform.position;
+        temp.SetActive(true);
+        temp.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 200);
     }
 
 }
