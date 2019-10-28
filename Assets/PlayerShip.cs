@@ -11,6 +11,7 @@ public class PlayerShip : MonoBehaviour
     public PlayerBullet bulletPool;
 
     public float moveSpeed;
+    private float shootTimer;
     private bool isNeutral = true;
 
 
@@ -26,19 +27,25 @@ public class PlayerShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        shootTimer -= Time.deltaTime;
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             MoveShip();
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKey(KeyCode.J))
         {
-            ShootBullets();           
+            if (shootTimer <= 0)
+            {
+                ShootBullets();
+            }
+                    
         }
 
         
 
         Debug.Log("Horizontal: " + Input.GetAxisRaw("Horizontal"));
-       Debug.Log("Vertical: " + Input.GetAxisRaw("Vertical"));
+        Debug.Log("Vertical: " + Input.GetAxisRaw("Vertical"));
     }
 
     private void FixedUpdate()
@@ -79,6 +86,8 @@ public class PlayerShip : MonoBehaviour
 
     private void ShootBullets()
     {
+        shootTimer = 0.3f;
+
         Debug.Log("Shooting");
         GameObject temp = bulletPool.GetBullet();
         temp.transform.position = transform.position;
