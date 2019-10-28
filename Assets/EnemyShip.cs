@@ -37,6 +37,7 @@ public class EnemyShip : MonoBehaviour
         {
             ShootBullet();
         }
+
     }
 
     private void ShootBullet()
@@ -53,5 +54,21 @@ public class EnemyShip : MonoBehaviour
     private void MoveShip()
     {
         my_Rigidbody.AddForce(Vector3.down * 100);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet_player")
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet_player")
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

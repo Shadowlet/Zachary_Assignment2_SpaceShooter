@@ -95,4 +95,20 @@ public class PlayerShip : MonoBehaviour
         temp.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 200);
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet_enemy" || collision.gameObject.tag == "ship_enemy")
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet_enemy" || collision.gameObject.tag == "ship_enemy")
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
