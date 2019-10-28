@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class BulletPool : MonoBehaviour
 {
-    public GameObject player;
     [SerializeField] private GameObject bullet;
     private List<GameObject> bulletPool;
 

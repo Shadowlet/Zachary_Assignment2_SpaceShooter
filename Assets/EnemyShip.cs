@@ -6,37 +6,52 @@ public class EnemyShip : MonoBehaviour
 {
     public GameObject bullet;
 
+    public BulletPool bulletPool;
+    Rigidbody2D my_Rigidbody;
+
     public float score;
-    private float shootTimer;
-    private bool isEnabled = false;
+    private float shootTimer = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        my_Rigidbody = GetComponent<Rigidbody2D>();
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         
     }
 
     private void OnEnable()
     {
-        isEnabled = true;
+        MoveShip();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isEnabled == true)
+        shootTimer -= Time.deltaTime;
+
+        if (shootTimer <= 0)
         {
-            MoveShip();
+            ShootBullet();
         }
     }
 
     private void ShootBullet()
     {
+        shootTimer = 1.5f;
 
+        Debug.Log("Shooting");
+        GameObject temp = bulletPool.GetBullet();
+        temp.transform.position = transform.position;
+        temp.SetActive(true);
+        temp.GetComponent<Rigidbody2D>().AddForce(Vector3.down * 200);
     }
 
     private void MoveShip()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * 100);
+        my_Rigidbody.AddForce(Vector3.down * 100);
     }
 }

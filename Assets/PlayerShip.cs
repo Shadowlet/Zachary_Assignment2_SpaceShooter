@@ -8,7 +8,7 @@ public class PlayerShip : MonoBehaviour
     Rigidbody2D my_Rigidbody;
     Animator my_animator;
 
-    public PlayerBullet bulletPool;
+    public BulletPool bulletPool;
 
     public float moveSpeed;
     private float shootTimer;
