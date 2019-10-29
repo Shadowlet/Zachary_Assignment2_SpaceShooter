@@ -6,7 +6,7 @@ public class EnemyShip : MonoBehaviour
 {
     public GameObject bullet;
 
-    public BulletPool bulletPool;
+    private BulletPool bulletPool;
     Rigidbody2D my_Rigidbody;
 
     public float score;
@@ -16,6 +16,8 @@ public class EnemyShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bulletPool = GameObject.Find("EnemyBulletManager").GetComponent<BulletPool>();
+
         my_Rigidbody = GetComponent<Rigidbody2D>();
         gameObject.SetActive(false);
         gameObject.SetActive(true);
