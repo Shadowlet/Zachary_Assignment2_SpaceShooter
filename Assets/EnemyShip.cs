@@ -16,16 +16,15 @@ public class EnemyShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletPool = GameObject.Find("EnemyBulletManager").GetComponent<BulletPool>();
-
-        my_Rigidbody = GetComponent<Rigidbody2D>();
-        gameObject.SetActive(false);
-        gameObject.SetActive(true);
+        
         
     }
 
     private void OnEnable()
     {
+        bulletPool = GameObject.Find("EnemyBulletManager").GetComponent<BulletPool>();
+
+        my_Rigidbody = GetComponent<Rigidbody2D>();
         MoveShip();
         
     }

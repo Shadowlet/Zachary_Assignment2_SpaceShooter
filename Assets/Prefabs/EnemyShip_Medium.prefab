@@ -121,9 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5456765106832636129, guid: 41bcf8dd3f0e45743989d70591c3d35c, type: 3}
-  bulletPool: {fileID: 5860669824446167888, guid: 94780623bc8a8714cb931c7611d3f24d,
-    type: 3}
-  score: 0
+  score: 100
 --- !u!50 &3974167350178828572
 Rigidbody2D:
   serializedVersion: 4
